@@ -1,0 +1,22 @@
+syntax = "proto3";
+option go_package = "./image_service";
+
+service ImageService {
+  rpc UploadImage(UploadImageRequest) returns (UploadImageResponse) {}
+}
+
+enum ImageFormat {
+  JPEG = 0;
+  PNG = 1;
+  GIF = 2;
+}
+
+message UploadImageRequest {
+  string category = 1;
+  ImageFormat imageFormat = 2;
+  bytes imageData = 3;
+}
+
+message UploadImageResponse {
+  bool success = 1;
+}

@@ -1,0 +1,24 @@
+syntax = "proto3";
+option go_package = "./category_service";
+
+service CategoryService {
+  rpc CreateCategory (CreateCategoryRequest) returns (CreateCategoryResponse) {}
+  rpc ListCategories (ListCategoriesRequest) returns (ListCategoriesResponse) {}
+}
+
+message CreateCategoryRequest {
+  string parent = 1;
+  string category = 2;
+}
+
+message CreateCategoryResponse {
+  bool success = 1;
+}
+
+message ListCategoriesRequest {
+  string parent = 1;
+}
+
+message ListCategoriesResponse {
+  repeated string categories = 1;
+}
